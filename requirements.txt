@@ -1,0 +1,9 @@
+# Capstone Project 7 - Employee Attrition & Workforce Analytics
+# Versions verified against the executed notebook (see README section 8).
+numpy==2.2.6
+pandas==2.2.3
+matplotlib==3.11.0
+seaborn==0.13.2
+scikit-learn==1.6.1
+# Optional dev tools used to re-run the notebook headlessly (README section 8):
+# nbformat>=5, nbconvert>=7, jupyter

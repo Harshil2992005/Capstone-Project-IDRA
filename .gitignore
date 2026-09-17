@@ -1,0 +1,29 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+
+# ---- Virtual environments ----
+.venv/
+venv/
+env/
+ENV/
+
+# ---- Jupyter ----
+.ipynb_checkpoints/
+
+# ---- OS / editor noise ----
+.DS_Store
+Thumbs.db
+Desktop.ini
+.vs/
+.vscode/
+
+# ---- IDRA drafts kept out of the repo by design ----
+# Report/guide drafts live outside this folder; if any are dropped in here
+# accidentally they must not be committed (see README section 6).
+finalreport.*
+capstone_guide*.txt
+capstone_pdf*.txt
