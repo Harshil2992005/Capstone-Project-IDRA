@@ -30,7 +30,7 @@ A research-article style capstone for the **India Data Research Academy (IDRA) D
 | Best model | **Logistic Regression** — test acc 76.2%, ROC-AUC **0.805**, recall(leaver) **0.638** |
 | Why LR wins | Random Forest hits 100% train / 84.4% test (gap 15.65% → overfit) and catches only **4 of 47** real leavers (recall 0.085) |
 | Distribution | 1,233 stayed / 237 left (16.1% leavers → imbalanced) |
-| Deliverables | `IDRA PROJECT_7.ipynb`, `Capstone7_cleaned_dataset.csv`, `p7.csv`, `requirements.txt`, 3D figures in `assets/`, this README |
+| Deliverables | `Patel_Harshil_Capstone_Notebook.ipynb`, `Capstone7_cleaned_dataset.csv`, `p7.csv`, `Patel_Harshil_Capstone_2026.pdf`, `requirements.txt`, `LICENSE`, 3D figures in `assets/`, this README |
 
 ---
 
@@ -57,7 +57,7 @@ The system maps onto four of the canonical layers. The "UI" is the notebook itse
 ```mermaid
 flowchart LR
     subgraph ACCESS["ACCESS — Jupyter notebook"]
-        NB["IDRA PROJECT_7.ipynb"]
+        NB["Patel_Harshil_Capstone_Notebook.ipynb"]
     end
     subgraph APP["APPLICATION — pipeline cells"]
         CLN["clean + engineer + encode + split"]
@@ -132,7 +132,7 @@ Two-phase note (the offline/online split from the AI/ML lens): the **offline pha
 
 ## 4. Per-function breakdown
 
-Every block below is copy-pasted from `IDRA PROJECT_7.ipynb` (cell indexes in brackets). Each "Why this design" names the rejected alternative.
+Every block below is copy-pasted from `Patel_Harshil_Capstone_Notebook.ipynb` (cell indexes in brackets). Each "Why this design" names the rejected alternative.
 
 ### 4.1 Loading the dataset — cell 7
 
@@ -257,19 +257,21 @@ x = MonthlyIncome, y = JobSatisfaction, z = YearsAtCompany; red triangles are th
 ```
 IDRA CAPSTONE PROJECT 7/
 +-- p7.csv                                # raw input, 1470 x 35 (IBM HR Analytics dataset, renamed from Capstone7_IBM_HR_Attrition_Dataset.csv)
-+-- Capstone7_cleaned_dataset.csv            # exported clean+engineered data, 1470 x 34
-+-- IDRA PROJECT_7.ipynb              # the full analysis, executed top-to-bottom
-+-- requirements.txt                         # pinned Python deps (exact versions in section 8)
-+-- assets/                                  # 3D figures rendered with matplotlib mplot3d
-|   +-- 1.png                              # 3D layer-stack of the whole system (section 2)
-|   +-- 2.png                              # 3D full pipeline - 18 stages, stage-by-stage (section 2)
-|   +-- 3.png                              # 3D confusion matrices LR vs RF, same 294 test rows (section 5)
-|   +-- 4.png                              # 3D risk scatter of all 1,470 employees (section 5)
-+-- README.md                                # this architecture document
-+-- LICENSE                                  # MIT (see section 12)
++-- Capstone7_cleaned_dataset.csv         # exported clean+engineered data, 1470 x 34
++-- Patel_Harshil_Capstone_Notebook.ipynb # the full analysis, executed top-to-bottom
++-- Patel_Harshil_Capstone_2026.pdf       # final written capstone report (research-article style)
++-- requirements.txt                      # pinned Python deps (exact versions in section 8)
++-- .gitignore                            # excludes venvs & caches; drafts live in parent folder (IDRA 2)
++-- assets/                               # 3D figures rendered with matplotlib mplot3d
+|   +-- 1.png                            # 3D layer-stack of the whole system (section 2)
+|   +-- 2.png                            # 3D full pipeline - 18 stages, stage-by-stage (section 2)
+|   +-- 3.png                            # 3D confusion matrices LR vs RF, same 294 test rows (section 5)
+|   +-- 4.png                            # 3D risk scatter of all 1,470 employees (section 5)
++-- README.md                            # this architecture document
++-- LICENSE                              # MIT (see section 12)
 ```
 
-> Report drafts (`finalreport.md/.tex`, the guide PDFs) are prepared in a follow-up step and added to a later revision — they are intentionally not part of this repo yet. Nothing in this document claims otherwise.
+> The final written capstone is committed as `Patel_Harshil_Capstone_2026.pdf`. Working drafts (`finalreport.md/.tex`, guide PDFs) live in the parent folder (`IDRA 2`), outside this repo — nothing here points at them. Nothing in this document claims otherwise.
 
 Dependency pins live in `requirements.txt` **and** §8 (redundant on purpose — the file allows a one-shot `pip install -r requirements.txt`, §8 shows the same pins in a runnable step). The notebook's first cell also imports everything at the top, so dependencies remain visible at the moment of use.
 
@@ -323,21 +325,21 @@ python -m pip install -r requirements.txt
 python -m pip install "nbformat>=5" "nbconvert>=7" "jupyter"
 
 # 4. Open in Jupyter
-jupyter notebook "IDRA PROJECT_7.ipynb"
+jupyter notebook "Patel_Harshil_Capstone_Notebook.ipynb"
 ```
 
 **Check it's up (execute every cell headlessly and write outputs back):**
 
 ```powershell
-python -m nbconvert --to notebook --execute --inplace "IDRA PROJECT_7.ipynb"
+python -m nbconvert --to notebook --execute --inplace "Patel_Harshil_Capstone_Notebook.ipynb"
 python -c "import pandas, sklearn, matplotlib, seaborn; print('pandas', pandas.__version__, '| sklearn', sklearn.__version__, '| matplotlib', matplotlib.__version__, '| seaborn', seaborn.__version__)"
 ```
 
-Expected print: `pandas 2.2.3 | sklearn 1.6.1 | matplotlib 3.11.0 | seaborn 0.13.2` — and the nbconvert command finishes with `Writing <bytes> bytes to IDRA PROJECT_7.ipynb`. The last cell should report `Saved 'Capstone7_cleaned_dataset.csv' - 1470 rows, 34 columns`. The 3D figures referenced in §2 and §5 live in `assets/` (PNGs render in the notebook and this README).
+Expected print: `pandas 2.2.3 | sklearn 1.6.1 | matplotlib 3.11.0 | seaborn 0.13.2` — and the nbconvert command finishes with `Writing <bytes> bytes to Patel_Harshil_Capstone_Notebook.ipynb`. The last cell should report `Saved 'Capstone7_cleaned_dataset.csv' - 1470 rows, 34 columns`. The 3D figures referenced in §2 and §5 live in `assets/` and render in this README.
 
 > **Note the CSV name exactly:** the raw file is `p7.csv`. `pd.read_csv` uses a relative path, so run the notebook with the working directory set to this folder.
 
-**Google Colab alternative:** upload `IDRA PROJECT_7.ipynb` and the raw CSV, then `Runtime → Run all`. Absolute Windows paths are **not** used anywhere in the notebook, so Colab works unchanged.
+**Google Colab alternative:** upload `Patel_Harshil_Capstone_Notebook.ipynb` and the raw CSV, then `Runtime → Run all`. Absolute Windows paths are **not** used anywhere in the notebook, so Colab works unchanged.
 
 ---
 
